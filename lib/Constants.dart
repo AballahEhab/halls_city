@@ -26,6 +26,12 @@ const back_icon = Icon(
   color: main_dark_color,
   size: 24.0,
 );
+//drawer menu as an icon
+const menu_icon = Icon(
+  Icons.menu,
+  color: light_gray_color,
+  size: 30.0,
+);
 
 //
 const all_sides_padding = EdgeInsets.all(8.0);

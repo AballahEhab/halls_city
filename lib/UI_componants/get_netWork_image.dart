@@ -35,6 +35,6 @@ class GetNetworkImage extends StatelessWidget {
               );
       },
     );
-    ;
+
   }
 }
