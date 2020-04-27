@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:halls_city/UI_componants/hall_properties.dart';
 import 'package:halls_city/models/place.dart';
 
+import '../Constants.dart';
+
 //this class is a parent class for all halls categories
 
 class Hall extends Place {
@@ -17,6 +19,23 @@ class Hall extends Place {
 
   Hall({
     String name,
+    this.category,
+    this.propertyIcon,
+    Map<String,dynamic>namedProperties
+}):super(
+    placeName:name,
+    namedProperty:namedProperties
+  ){
+this.images = [
+  network_image1,
+  network_image2,
+  network_image2
+];
+rating = 3.0;
+  }
+
+  Hall.Initialize({
+    String name,
     List hallImages,
     this.category,
     this.location,
@@ -24,7 +43,7 @@ class Hall extends Place {
     String address,
     bool wifi,
     bool WC,
-  }) : super(
+  }) : super.initialize(
           placeName: name,
           images: hallImages,
         ) {

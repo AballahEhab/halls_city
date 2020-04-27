@@ -56,32 +56,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-//              Padding(
-//                padding: const EdgeInsets.all(16.0),
-//                child: DropdownButton(
-//                  value: value,
-//                  hint: Text('Choose a day'),
-//                  isExpanded: true,
-//                  onChanged: (NewValue) {
-//                    print(value);
-//                    this.value = NewValue;
-//                  },
-//                  items: <DropdownMenuItem>[
-//                    DropdownMenuItem(
-//                      child: Text('sat'),
-//                    ),
-//                    DropdownMenuItem(
-//                      child: Text('sat'),
-//                    ),
-//                    DropdownMenuItem(
-//                      child: Text('sat'),
-//                    ),
-//                    DropdownMenuItem(
-//                      child: Text('sat'),
-//                    )
-//                  ],
-//                ),
-//              ),
+
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TextFormField(

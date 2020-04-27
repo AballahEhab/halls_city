@@ -14,7 +14,7 @@ class Room extends Place {
     List roomImages,
     num pricePerHour,
     int numOfChairs,
-  }) :super(
+  }) :super.initialize(
       placeName: roomName,
       images: roomImages
   ) {

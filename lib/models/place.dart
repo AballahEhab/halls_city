@@ -15,7 +15,12 @@ class Place {
 
   Schedule schedule;
 
-  Place({
+  Place({this.placeName,
+      this.namedProperty}){
+    this.schedule = Schedule();
+  }
+
+  Place.initialize({
     this.images,
     this.placeName,
   }) {

@@ -13,7 +13,7 @@ class WorkSpace extends Hall {
       bool workSpacewifi,
       bool workSpaceWC,
       this.rooms})
-      : super(
+      : super.Initialize(
           name: workSpaceName,
           hallImages: workSpaceImages,
           category: 'WorkSpace',
