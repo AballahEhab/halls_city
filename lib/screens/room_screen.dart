@@ -10,7 +10,7 @@ import '../constants.dart' as constant;
 class RoomScreen extends StatefulWidget {
   Room currentRoom;
 
-  RoomScreen({this.currentRoom });
+  RoomScreen({this.currentRoom});
 
   @override
   _RoomScreenState createState() => _RoomScreenState();
@@ -68,10 +68,7 @@ class _RoomScreenState extends State<RoomScreen> {
                       itemBuilder: (BuildContext context, int itemIndex) {
                         return Image(
                           image: widget.currentRoom.images[itemIndex],
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
                         );
                       },
@@ -134,21 +131,20 @@ class _RoomScreenState extends State<RoomScreen> {
                     // putting the button into an expanded widget to fill the
                     // residual space inside the row
                     Expanded(
-                      //Calling a static custom button func with class name(HallProperties)
+                        //Calling a static custom button func with class name(HallProperties)
                         child: HallProperties.customButton(
-                            context: this.context,
-                          //setting the current context which we are working in
-                          text: 'Rent Now',
-                          //the text of the button
-                          onclick: () {
-                            Navigator.push(
-                                context, MaterialPageRoute(builder: (context) =>
-                                ReservationScreen(
-                                  hallSchedule: widget.currentRoom.schedule,
-                                ))); // routing the
-                          },
-                        )
-                    ),
+                      context: this.context,
+                      //setting the current context which we are working in
+                      text: 'Rent Now',
+                      //the text of the button
+                      onclick: () {
+//                            Navigator.push(
+//                                context, MaterialPageRoute(builder: (context) =>
+//                                ReservationScreen(
+//                                  hallSchedule: widget.currentRoom.schedule,
+//                                ))); // routing the
+                      },
+                    )),
                     // a toggle favourite button
                     IconButton(
                       icon: Icon(
@@ -173,6 +169,4 @@ class _RoomScreenState extends State<RoomScreen> {
       ),
     );
   }
-
-
 }

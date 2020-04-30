@@ -15,9 +15,8 @@ class Place {
 
   Schedule schedule;
 
-  Place({this.placeName,
-      this.namedProperty}){
-    this.schedule = Schedule();
+  Place({this.placeName, this.namedProperty}) {
+//    this.schedule = Schedule();
   }
 
   Place.initialize({
@@ -25,7 +24,7 @@ class Place {
     this.placeName,
   }) {
     this.namedProperty = Map();
-    schedule = Schedule();
+//    schedule = Schedule();
   }
 
   //adding a named property to the hall

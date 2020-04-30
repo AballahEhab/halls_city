@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:halls_city/screens/adding_hall_screen.dart';
 import 'package:halls_city/screens/home_screen.dart';
+import 'package:halls_city/screens/location_screen(Empty).dart';
 import 'package:halls_city/screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

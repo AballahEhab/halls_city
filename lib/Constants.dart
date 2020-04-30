@@ -3,10 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
 //the main dark color of the logo
 const main_dark_color = Color(0xFF1A233F);
-
 
 //the main light color of the second version logo
 const main_light_color = Color(0xFF009EE2);
@@ -29,7 +27,7 @@ const back_icon = Icon(
 //drawer menu as an icon
 const menu_icon = Icon(
   Icons.menu,
-  color: light_gray_color,
+  color: main_dark_color,
   size: 30.0,
 );
 
@@ -60,3 +58,29 @@ const custom_divider = Padding(
 );
 
 enum halls_categores { Wedding, workSpace, event, studio }
+
+List<IconData> IconsData = [
+  Icons.card_membership,
+  Icons.event_seat,
+  Icons.record_voice_over,
+  Icons.speaker,
+  Icons.local_cafe,
+  Icons.wifi,
+  Icons.wc,
+  Icons.ac_unit,
+  Icons.personal_video,
+  Icons.kitchen,
+];
+
+List<String> IconsName = [
+  'Membership',
+  'Event Seat',
+  'Recording tools',
+  'Sound system',
+  'Drinks',
+  'Wifi',
+  'Wc',
+  'Air condition unit',
+  'Screen',
+  'Kitchen',
+];

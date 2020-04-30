@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:halls_city/Constants.dart';
 import 'package:halls_city/UI_componants/oval-right-clipper.dart';
+import 'package:halls_city/screens/adding_hall_screen.dart';
+import 'package:halls_city/screens/login_screen.dart';
 import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
@@ -130,10 +134,18 @@ class BuildDrawer extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: IconButton(
                       icon: Icon(
-                        Icons.power_settings_new,
-                        color: active,
+                        Icons.exit_to_app,
+                        color: main_dark_color,
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut();
+                        if (await FirebaseAuth.instance.currentUser() == null) {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                            return LoginScreen();
+                          }));
+                        }
+                      },
                     ),
                   ),
                   Container(
@@ -167,15 +179,51 @@ class BuildDrawer extends StatelessWidget {
                   ///I have to make these drawer list widgets manually cause it is containing different methods.
 
                   _buildDivider(),
-                  _buildRow(Icons.message, "Messages", showBadge: true),
+
+                  InkWell(
+                    child: _buildRow(Icons.add, "add Hall"),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AddHall()));
+                    },
+                  ),
+
                   _buildDivider(),
-                  _buildRow(Icons.notifications, "Notifications",
-                      showBadge: true),
+
+                  InkWell(
+                    child: _buildRow(Icons.history, "Reservation history"),
+                    onTap: () {},
+                  ),
+
                   _buildDivider(),
-                  _buildRow(Icons.info_outline, "Help"),
+
+                  InkWell(
+                    child: _buildRow(Icons.view_module, "My halls"),
+                    onTap: () {},
+                  ),
+
                   _buildDivider(),
-                  _buildRow(Icons.email, "Contact us"),
+                  InkWell(
+                    child: _buildRow(Icons.favorite, "Favorite"),
+                    onTap: () {},
+                  ),
+
                   _buildDivider(),
+
+                  InkWell(
+                    child: _buildRow(Icons.info_outline, "Help"),
+                    onTap: () {},
+                  ),
+
+                  _buildDivider(),
+
+                  InkWell(
+                    child: _buildRow(Icons.email, "Contact us"),
+                    onTap: () {},
+                  ),
+
+                  _buildDivider(),
+
                   InkWell(
                       child: _buildRow(Icons.person, "About Us"),
                       onTap: () => showAbout(context)),

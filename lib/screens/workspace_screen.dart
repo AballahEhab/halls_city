@@ -9,9 +9,7 @@ import 'package:halls_city/screens/room_screen.dart';
 
 import '../constants.dart' as constant;
 
-
 class WorkSpaceScreen extends StatefulWidget {
-
   WorkSpace workSpace;
 
   WorkSpaceScreen({this.workSpace});
@@ -22,7 +20,6 @@ class WorkSpaceScreen extends StatefulWidget {
 
 class _WorkSpaceScreenState extends State<WorkSpaceScreen>
     with SingleTickerProviderStateMixin {
-
   // declaring tab control because we will not use [defualTabControler] widget
   TabController _tabController;
 
@@ -87,10 +84,7 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
                           image: itemIndex == 0
                               ? constant.network_image2
                               : constant.network_image1,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
                         );
                       },
@@ -104,13 +98,9 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
                   labelColor: constant.main_dark_color,
                   indicator: CircleTabIndicator(
                       color: constant.main_light_color, radius: 3),
-                  labelStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700
-                  ),
-                  unselectedLabelStyle: TextStyle(
-                      fontSize: 15
-                  ),
+                  labelStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  unselectedLabelStyle: TextStyle(fontSize: 15),
                   tabs: <Widget>[
                     Tab(
                       text: 'Details',
@@ -147,8 +137,8 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8, left: 8),
+                                    padding:
+                                        const EdgeInsets.only(top: 8, left: 8),
                                     child: Text(
                                       widget.workSpace.placeName,
                                       style: TextStyle(
@@ -157,8 +147,8 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 18, top: 6),
+                                    padding:
+                                        const EdgeInsets.only(left: 18, top: 6),
                                     child: Text(widget.workSpace.category),
                                   )
                                 ],
@@ -181,15 +171,14 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
                           padding: const EdgeInsets.all(14),
                           child: Row(
                             children: <Widget>[
-                              ...widget.workSpace.getPropertyIcons(),
+//                              ...widget.workSpace.getPropertyIcons(),
                               Expanded(
                                 child: Container(),
                               ),
                               Padding(
                                 padding: constant.all_sides_padding,
                                 child: HallProperties.customRateBar(
-                                    rate: widget.workSpace.rating
-                                ),
+                                    rate: widget.workSpace.rating),
                               ),
                             ],
                           ),
@@ -204,71 +193,69 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
               GridView.builder(
                   itemCount: widget.workSpace.rooms.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2
-                  ),
+                      crossAxisCount: 2),
                   itemBuilder: (BuildContext context, int index) {
-                    return
-                      GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Stack(
-                              alignment: Alignment.bottomLeft,
-                              children: <Widget>[
-                                Column(
+                    return GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Stack(
+                            alignment: Alignment.bottomLeft,
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: GetNetworkImage(
+                                      image: widget
+                                          .workSpace.rooms[index].images[0],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                        colors: [
+                                      Colors.black,
+                                      Colors.transparent
+                                    ])),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Expanded(
-                                      child: GetNetworkImage(
-                                        image: widget.workSpace.rooms[index]
-                                            .images[0],
-                                      ),
+                                    Text(
+                                      widget.workSpace.rooms[index].placeName,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 23),
+                                    ),
+                                    Text(
+                                      '${widget.workSpace.rooms[index].namedProperty['Price per hour']}\$/hr',
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 15),
                                     ),
                                   ],
                                 ),
-                                Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          colors: [
-                                            Colors.black,
-                                            Colors.transparent
-                                          ])),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Text(
-                                        widget.workSpace.rooms[index].placeName,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 23),
-                                      ),
-                                      Text(
-                                        '${widget.workSpace.rooms[index]
-                                            .namedProperty['Price per hour']}\$/hr',
-                                        style: TextStyle(
-                                            color: Colors.grey, fontSize: 15),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (
-                              context) =>
-                              RoomScreen(
-                                  currentRoom: widget.workSpace.rooms[index]
-                              )));
-                        },
-                      );
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RoomScreen(
+                                    currentRoom:
+                                        widget.workSpace.rooms[index])));
+                      },
+                    );
                   }),
             ],
             controller: _tabController,
@@ -277,6 +264,4 @@ class _WorkSpaceScreenState extends State<WorkSpaceScreen>
       ),
     );
   }
-
-
 }

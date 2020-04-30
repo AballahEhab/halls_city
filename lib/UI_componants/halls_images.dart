@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:halls_city/Constants.dart' as constant;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:halls_city/screens/hall_screen.dart';
+import 'package:halls_city/screens/workspace_screen.dart';
 
 class HallsImage extends StatelessWidget {
-  List<Map<String, dynamic>> hallsList;
+  List hallsList;
   HallsImage({this.hallsList});
 //  final String imgUrl;
 //  final String imgName;
@@ -40,6 +42,17 @@ class HallsImage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             //making the image border curvy not hard
             child: GestureDetector(
+              onTap: () {
+                print(hallsList[index].data);
+                print(hallsList[index].data['namedProperties']);
+                print('id.....:${hallsList[index].documentID}');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HallScreen(
+                              hallObj: hallsList[index],
+                            )));
+              },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
                 child: Stack(

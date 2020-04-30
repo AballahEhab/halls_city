@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:halls_city/UI_componants/halls_images.dart';
 import 'package:halls_city/Constants.dart' as constant;
 
 class CategoryScreen extends StatefulWidget {
-  List<Map<String, dynamic>> hallsList;
+  List<DocumentSnapshot> hallsList;
   String categoryName;
   CategoryScreen({this.hallsList, this.categoryName});
   // creating a new Category screen which contains halls categories { Wedding, workSpace, event, studio }

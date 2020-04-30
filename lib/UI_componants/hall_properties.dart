@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../constants.dart';
-
+import '../Constants.dart';
 
 //this class contains some static methods which can be called by class name
 // every method returns a customized widget used commonly over the project
 
-
 class HallProperties {
-
-
 //this method returns an icon which represents a property of a hall
   // this func creates a new room property with the name and its value as Row
   static Widget creatNamedproperty({String property, String value}) {
@@ -22,7 +18,6 @@ class HallProperties {
       ),
     );
   }
-
 
   //this function takes two parameter
   //iconData to return an icon widget in a cutom setup
@@ -47,20 +42,18 @@ class HallProperties {
     return ClipRRect(
       borderRadius: circularBorder,
       child: MaterialButton(
-        //setting a height of the button to fill the row height
-        height: 50,
-        color: main_light_color,
+          //setting a height of the button to fill the row height
+          height: 50,
+          color: main_light_color,
           // button color which is the same app bar color
-        child: Text(
-          text,
-          // customizing the text style and change the text size and color
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-          onPressed: onclick
-      ),
+          child: Text(
+            text,
+            // customizing the text style and change the text size and color
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+          onPressed: onclick),
     );
   }
-
 
   static Widget customRateBar({num rate}) {
     return RatingBar(
@@ -71,11 +64,41 @@ class HallProperties {
       allowHalfRating: true,
       itemCount: 5,
       itemPadding: EdgeInsets.symmetric(),
-      itemBuilder: (context, _) =>
-          Icon(
-            Icons.star,
-            color: Colors.amber,
-          ),
+      itemBuilder: (context, _) => Icon(
+        Icons.star,
+        color: Colors.amber,
+      ),
     );
+  }
+
+  static List<Widget> getNamedProperties({Map PnamedProperty}) {
+    // the list which we store widgets in to be returned finally
+    List<Widget> namedProperties = List();
+    print(PnamedProperty);
+    //the loop
+    PnamedProperty.forEach((propertyName, value) {
+      // the property is set with a custom look called from [HallProperties] class as a static function [creatNamedproperty]
+      namedProperties.add(HallProperties.creatNamedproperty(
+        property: propertyName,
+        value: value.toString(),
+      ));
+      namedProperties.add(custom_divider);
+    });
+    return namedProperties;
+  }
+
+  static List<Widget> getPropertyIcons({Map propertyIcon}) {
+    // the list which we store widgets in to be returned finally
+    List<Widget> iconsList = List();
+    //the loop
+    propertyIcon.forEach((iconName, state) {
+      //adding a new icon widget to the list
+      iconsList.add(
+          // the icon is set with a custom look called from [HallProperties] class as a static function [creatPropertyIcon]
+          HallProperties.creatPropertyIcon(
+              iconName: IconsData[IconsName.indexOf(iconName)],
+              isEnabled: state));
+    });
+    return iconsList;
   }
 }

@@ -14,12 +14,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   String lT = 'Welcome to Halls City';
   HallsData _hallsData;
-//  bool status = false;
-//  void navigateUser() async {
-//    SharedPreferences prefs = await SharedPreferences.getInstance();
-//    this.status = prefs.getBool('isLoggedIn') ?? false;
-//    print('labla$status');
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +35,7 @@ class _SplashState extends State<Splash> {
         lT,
         style: TextStyle(fontSize: 11.0, color: main_dark_color),
       ),
-      seconds: 5,
+      seconds: 3,
       navigateAfterSeconds: LoginScreen(),
       loaderColor: light_gray_color,
       //this will be a method
